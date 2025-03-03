@@ -113,3 +113,14 @@ class Bot(Client):
 
 app = Bot()
 app.run()
+
+from pyrogram.errors import FloodWait
+import time
+
+def send_safe_message(client, chat_id, text):
+    try:
+        client.send_message(chat_id, text)
+    except FloodWait as e:
+        print(f"Rate limited! Waiting for {e.value} seconds.")
+        time.sleep(e.value)  # Wait for the required time
+        send_safe_message(client, chat_id, text)  # Retry after waiting
