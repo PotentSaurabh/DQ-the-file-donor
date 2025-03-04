@@ -264,5 +264,4 @@ LOGO = """
    \|_________|                                                           
                                                                           
                                                                           
-                                                                          """
-safe_api_call(client.send_message, "chat_id", "Your message")
+                                                                          ""
